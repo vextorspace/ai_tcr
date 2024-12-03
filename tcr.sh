@@ -1,7 +1,6 @@
 #!/bin/sh
 
 echo "Running gradle tests..."
-cargo test --test
 cargo test calc
 
 # Store the test result
@@ -17,5 +16,7 @@ else
     COMMIT_MESSAGE=`commit_message`
     git commit -m "$COMMIT_MESSAGE"
 fi
+
+cargo test --test acceptance_tests
 
 exit 0
