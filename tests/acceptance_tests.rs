@@ -8,4 +8,11 @@ mod tests {
         let result = calculator.evaluate("2 + 3");
         assert_eq!(result, 5);
     }
+
+    #[test]
+    fn simple_number() {
+        let calculator = Calculator::new();
+        let result = calculator.evaluate("5");
+        assert_eq!(result, 5);
+    }
 }
