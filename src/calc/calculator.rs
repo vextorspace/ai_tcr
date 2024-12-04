@@ -7,6 +7,9 @@ impl Calculator {
 
     pub fn evaluate(&self, expression: &str) -> i32 {
         let parts: Vec<&str> = expression.split_whitespace().collect();
+        if parts.len() == 1 {
+            return parts[0].parse().unwrap();
+        }
         let left: i32 = parts[0].parse().unwrap();
         let right: i32 = parts[2].parse().unwrap();
         match parts[1] {
@@ -45,5 +48,11 @@ mod tests {
     fn test_divide() {
         let calculator = Calculator::new();
         assert_eq!(calculator.evaluate("6 / 2"), 3);
+    }
+
+    #[test]
+    fn test_single_number() {
+        let calculator = Calculator::new();
+        assert_eq!(calculator.evaluate("5"), 5);
     }
 }
