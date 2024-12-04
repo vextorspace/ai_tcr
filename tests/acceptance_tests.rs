@@ -2,5 +2,7 @@
 fn failing_test() {
     let calculator = Calculator::new();
 
-    calculator.evaluate("2 + 3");
+    let result = calculator.evaluate("2 + 3");
+
+    assert_eq!(result, 5);
 }
