@@ -1,7 +1,7 @@
-struct Calculator;
+pub struct Calculator;
 
 impl Calculator {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Calculator
     }
 }
