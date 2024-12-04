@@ -1,9 +1,11 @@
-#[cfg(test)]
-mod tests {
-    use super::*;
+struct Test;
 
-    #[test]
-    fn good_test() {
-       assert_eq!(1,1);
+impl Test {
+    fn new() -> Self {
+        Test
+    }
+
+    fn add(&self, a: i32, b: i32) -> i32 {
+        a + b
     }
 }
