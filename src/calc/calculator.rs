@@ -11,7 +11,6 @@ impl Calculator {
         let right: i32 = parts[2].parse().unwrap();
         match parts[1] {
             "+" => left + right,
-            "-" => left - right,
             _ => panic!("Unsupported operation"),
         }
     }
@@ -27,9 +26,4 @@ mod tests {
         assert_eq!(calculator.evaluate("2 + 3"), 5);
     }
 
-    #[test]
-    fn test_subtract() {
-        let calculator = Calculator::new();
-        assert_eq!(calculator.evaluate("5 - 3"), 2);
-    }
 }
