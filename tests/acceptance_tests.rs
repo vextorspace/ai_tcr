@@ -8,11 +8,4 @@ mod tests {
         let result = calculator.evaluate("2 + 3");
         assert_eq!(result, 5);
     }
-
-    #[test]
-    fn subtraction() {
-        let calculator = Calculator::new();
-        let result = calculator.evaluate("5 - 3");
-        assert_eq!(result, 2);
-    }
 }
