@@ -1,11 +1,11 @@
-struct Calculator;
+pub struct Calculator;
 
 impl Calculator {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Calculator
     }
 
-    fn evaluate(&self, expression: &str) -> i32 {
+    pub fn evaluate(&self, expression: &str) -> i32 {
         let parts: Vec<&str> = expression.split_whitespace().collect();
         let left: i32 = parts[0].parse().unwrap();
         let right: i32 = parts[2].parse().unwrap();

@@ -15,7 +15,7 @@ impl Calculator {
 
 #[cfg(test)]
 mod tests {
-    use super::Calculator;
+    use ai_tcr_string_calc::calc::calculator::Calculator;
 
     #[test]
     fn failing_test() {
