@@ -8,4 +8,5 @@ mod tests {
         let result = calculator.evaluate("2 + 3");
         assert_eq!(result, 5);
     }
+
 }
