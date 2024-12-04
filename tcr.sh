@@ -5,11 +5,12 @@ echo "Find changed files..."
 CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$'`
 
 
+cargo test calc
+# Store the test result
+TEST_RESULT=$?
+
 if [ -z "$CHANGED_FILES" ]; then
-    echo "No changed files detected. Running tests..."
-    cargo test calc
-    # Store the test result
-    TEST_RESULT=$?
+    echo "No changed files detected."
 
     # Check if tests failed
     if [ $TEST_RESULT -ne 0 ]; then
@@ -22,18 +23,20 @@ if [ -z "$CHANGED_FILES" ]; then
       git commit -m "$COMMIT_MESSAGE"
     fi
 else
-    FIRST_CHANGED_FILE=$(echo "$CHANGED_FILES" | head -n 1)
-    echo "Writing code..."
-    
-    OUTPUT=$(cargo test calc 2>&1)
+    if [ $TEST_RESULT -ne 0 ]; then
+      FIRST_CHANGED_FILE=$(echo "$CHANGED_FILES" | head -n 1)
 
-    # Execute ai_coder
-    ai_coder "$FIRST_CHANGED_FILE" "$OUTPUT"
+      echo "Writing code..."
 
-    cargo test calc
-    # Store the test result
-    TEST_RESULT=$?
+      OUTPUT=$(cargo test calc 2>&1)
 
+      # Execute ai_coder
+      ai_coder "$FIRST_CHANGED_FILE" "$OUTPUT"
+
+      cargo test calc
+      # Store the test result
+      TEST_RESULT=$?
+    fi
     # Check if tests failed
     if [ $TEST_RESULT -ne 0 ]; then
         echo "Tests failed! Removing changes..."
