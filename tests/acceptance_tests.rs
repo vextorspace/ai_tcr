@@ -1,23 +1,21 @@
-mod calc {
-    pub struct Calculator;
+pub struct Calculator;
 
-    impl Calculator {
-        pub fn new() -> Self {
-            Calculator
-        }
+impl Calculator {
+    pub fn new() -> Self {
+        Calculator
+    }
 
-        pub fn evaluate(&self, expression: &str) -> i32 {
-            let parts: Vec<&str> = expression.split_whitespace().collect();
-            let left: i32 = parts[0].parse().unwrap();
-            let right: i32 = parts[2].parse().unwrap();
-            left + right
-        }
+    pub fn evaluate(&self, expression: &str) -> i32 {
+        let parts: Vec<&str> = expression.split_whitespace().collect();
+        let left: i32 = parts[0].parse().unwrap();
+        let right: i32 = parts[2].parse().unwrap();
+        left + right
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::calc::Calculator;
+    use super::Calculator;
 
     #[test]
     fn failing_test() {
