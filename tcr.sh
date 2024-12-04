@@ -25,12 +25,15 @@ else
     FIRST_CHANGED_FILE=$(echo "$CHANGED_FILES" | head -n 1)
     echo "Writing code..."
     
+    OUTPUT=$(cargo test calc 2>&1)
+
+    # Execute ai_coder
+    ai_coder "$FIRST_CHANGED_FILE" "$OUTPUT"
+
     cargo test calc
     # Store the test result
     TEST_RESULT=$?
 
-    # Execute ai_coder
-    ai_coder "$FIRST_CHANGED_FILE" "$TEST_RESULT"
     # Check if tests failed
     if [ $TEST_RESULT -ne 0 ]; then
         echo "Tests failed! Removing changes..."
