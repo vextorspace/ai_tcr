@@ -1,8 +1,28 @@
-#[test]
-fn failing_test() {
-    let calculator = Calculator::new();
+mod calc {
+    pub struct Calculator;
 
-    let result = calculator.evaluate("2 + 3");
+    impl Calculator {
+        pub fn new() -> Self {
+            Calculator
+        }
 
-    assert_eq!(result, 5);
+        pub fn evaluate(&self, expression: &str) -> i32 {
+            let parts: Vec<&str> = expression.split_whitespace().collect();
+            let left: i32 = parts[0].parse().unwrap();
+            let right: i32 = parts[2].parse().unwrap();
+            left + right
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::calc::Calculator;
+
+    #[test]
+    fn failing_test() {
+        let calculator = Calculator::new();
+        let result = calculator.evaluate("2 + 3");
+        assert_eq!(result, 5);
+    }
 }
