@@ -8,6 +8,12 @@ impl Operation {
             Operation::PLUS => a + b,
         }
     }
+
+    fn symbol(&self) -> &str {
+        match self {
+            Operation::PLUS => "+",
+        }
+    }
 }
 
 #[cfg(test)]
@@ -24,5 +30,12 @@ mod tests {
         let plus = Operation::PLUS;
         let result = plus.operate(2, 3);
         assert_eq!(result, 5);
+    }
+
+    #[test]
+    fn plus_symbol() {
+        let plus = Operation::PLUS;
+        let symbol = plus.symbol();
+        assert_eq!(symbol, "+");
     }
 }
