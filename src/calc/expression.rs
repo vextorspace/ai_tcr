@@ -107,4 +107,11 @@ mod tests {
         let value = expression.find_operation(Operation::PLUS);
         assert!(value.is_err());
     }
+
+    #[test]
+    fn find_operation_success_gives_operation_block() {
+        let expression = Expression::new("1 + 2");
+        let value = expression.find_operation(Operation::PLUS);
+        assert!(value.is_ok());
+    }
 }
