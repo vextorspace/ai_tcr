@@ -3,6 +3,7 @@ use crate::calc::{expression::Expression, operation::Operation};
 pub struct OperationBlock {
     operation: Option<Operation>,
     operand1: Option<Expression>,
+    operand2: Option<Expression>,
 }
 
 impl OperationBlock {
@@ -10,6 +11,7 @@ impl OperationBlock {
         OperationBlock {
             operation: None,
             operand1: None,
+            operand2: None,
         }
     }
 
@@ -20,6 +22,11 @@ impl OperationBlock {
 
     pub fn with_operand1(mut self, expr: Expression) -> Self {
         self.operand1 = Some(expr);
+        self
+    }
+
+    pub fn with_operand2(mut self, expr: Expression) -> Self {
+        self.operand2 = Some(expr);
         self
     }
 }
@@ -33,6 +40,7 @@ mod tests {
     fn test_implementation() {
         let _operation_block = OperationBlock::new()
             .with_operation(Operation::PLUS)
-            .with_operand1(Expression::new("1"));
+            .with_operand1(Expression::new("1"))
+            .with_operand2(Expression::new("2"));
     }
 }
