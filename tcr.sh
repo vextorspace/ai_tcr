@@ -30,7 +30,7 @@ else
     if [ $TEST_RESULT -ne 0 ]; then
       FIRST_CHANGED_FILE=$(echo "$CHANGED_FILES" | head -n 1)
 
-      echo "Writing code..."
+      echo "========= > Writing code < ========="
 
       OUTPUT=$(cargo test calc 2>&1)
 
