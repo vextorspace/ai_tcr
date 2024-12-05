@@ -118,4 +118,11 @@ mod tests {
         assert_eq!(block.operand1, Some(Expression::new("1")));
         assert_eq!(block.operand2, Some(Expression::new("2")));
     }
+
+    #[test]
+    fn evaluate_non_existent_operation_to_error() {
+        let expression = Expression::new("1 sblaae 2");
+        let value = expression.evaluate();
+        assert!(value.is_err());
+    }
 }
