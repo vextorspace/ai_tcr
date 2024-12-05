@@ -4,6 +4,11 @@ echo "Find changed files..."
 
 CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$' | grep '^src/'` | grep -v 'mod\.rs' | grep -v 'lib\.rs'
 
+echo "Changed files:"
+for file in $CHANGED_FILES; do
+    echo $file
+done
+
 cargo test calc
 # Store the test result
 TEST_RESULT=$?
