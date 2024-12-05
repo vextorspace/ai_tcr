@@ -10,10 +10,6 @@ impl Parser {
     pub fn evaluate(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
         expr.evaluate()
     }
-
-    pub fn parse(&self, expr: Expression) -> Vec<Expression> {
-        vec![expr]
-    }
 }
 
 #[cfg(test)]
