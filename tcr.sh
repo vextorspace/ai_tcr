@@ -43,10 +43,10 @@ else
     fi
     # Check if tests failed
     if [ $TEST_RESULT -ne 0 ]; then
-        echo "Tests failed! Removing changes..."
+        echo "/////// Tests failed! Removing changes... ///////"
         git reset --hard HEAD
     else
-        echo "Tests passed! Committing..."
+        echo "++++++ Tests passed! Committing... ++++++"
       git add .
       COMMIT_MESSAGE=`commit_message`
       git commit -m "$COMMIT_MESSAGE"
