@@ -20,11 +20,16 @@ impl Expression {
 
     pub fn find_operation(&self, op: Operation) -> Result<OperationBlock, std::fmt::Error> {
         if self.expr.contains(op.as_str()) {
-            let operation_block = OperationBlock::new().with_operation(op);
-            Ok(operation_block)
-        } else {
-            Err(std::fmt::Error)
+            let parts: Vec<&str> = self.expr.split(op.as_str()).collect();
+            if parts.len() == 2 {
+                let operand1 = Expression::new(parts[0].trim());
+                let operation_block = OperationBlock::new()
+                    .with_operation(op)
+                    .with_operand1(operand1);
+                return Ok(operation_block);
+            }
         }
+        Err(std::fmt::Error)
     }
 }
 
@@ -108,5 +113,6 @@ mod tests {
 
         let block = value.unwrap();
         assert_eq!(block.operation, Some(Operation::PLUS));
+        assert_eq!(block.operand1, Some(Expression::new("1")));
     }
 }
