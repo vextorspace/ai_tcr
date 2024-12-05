@@ -1,5 +1,6 @@
 use crate::calc::{expression::Expression, operation::Operation};
 
+#[derive(Clone, PartialEq, Debug)]
 pub struct OperationBlock {
     operation: Option<Operation>,
     operand1: Option<Expression>,
@@ -49,5 +50,6 @@ mod tests {
         assert_eq!(block.operation, Some(Operation::PLUS));
         assert_eq!(block.operand1, Some(first_expression));
         assert_eq!(block.operand2, Some(second_expression));
+        let _block_clone = block.clone();
     }
 }
