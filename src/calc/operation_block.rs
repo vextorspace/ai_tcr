@@ -38,13 +38,16 @@ mod tests {
 
     #[test]
     fn test_implementation() {
+        let first_expression = Expression::new("1");
+        let second_expression = Expression::new("2");
+
         let block = OperationBlock::new()
             .with_operation(Operation::PLUS)
-            .with_operand1(Expression::new("1"))
-            .with_operand2(Expression::new("2"));
+            .with_operand1(first_expression.clone())
+            .with_operand2(second_expression.clone());
 
         assert_eq!(block.operation, Some(Operation::PLUS));
-        assert_eq!(block.operand1, Some(Expression::new("1")));
-        assert_eq!(block.operand2, Some(Expression::new("2")));
+        assert_eq!(block.operand1, Some(first_expression));
+        assert_eq!(block.operand2, Some(second_expression));
     }
 }
