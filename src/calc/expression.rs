@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq)]
 pub struct Expression {
     expr: String,
 }
@@ -43,5 +44,12 @@ mod tests {
         let expression = Expression::new("1 + 2");
         let value = expression.evaluate();
         assert!(value.is_err());
+    }
+
+    #[test]
+    fn test_two_equal_numbers_are_equal() {
+        let expression1 = Expression::new("2");
+        let expression2 = Expression::new("2");
+        assert_eq!(expression1, expression2);
     }
 }
