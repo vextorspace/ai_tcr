@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Debug, PartialEq, Clone)]
 pub struct Expression {
     expr: String,
@@ -12,6 +14,12 @@ impl Expression {
 
     pub fn evaluate(&self) -> Result<i32, std::fmt::Error> {
         self.expr.parse().map_err(|_| std::fmt::Error)
+    }
+}
+
+impl fmt::Display for Expression {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.expr)
     }
 }
 
@@ -65,5 +73,11 @@ mod tests {
         let expression1 = Expression::new("2");
         let expression2 = Expression::new(" 2 ");
         assert_eq!(expression1, expression2);
+    }
+
+    #[test]
+    fn test_can_make_string() {
+        let expression = Expression::new("2 + 3");
+        assert_eq!(expression.to_string(), "2 + 3".to_string());
     }
 }
