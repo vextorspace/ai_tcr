@@ -14,7 +14,7 @@ cargo test calc
 TEST_RESULT=$?
 
 if [ -z "$CHANGED_FILES" ]; then
-    echo "No changed files detected."
+    echo "----------- No changed files detected -----------"
 
     # Check if tests failed
     if [ $TEST_RESULT -ne 0 ]; then
