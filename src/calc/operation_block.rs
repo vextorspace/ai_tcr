@@ -2,9 +2,9 @@ use crate::calc::{expression::Expression, operation::Operation};
 
 #[derive(Clone, PartialEq, Debug)]
 pub struct OperationBlock {
-    operation: Option<Operation>,
-    operand1: Option<Expression>,
-    operand2: Option<Expression>,
+    pub operation: Option<Operation>,
+    pub operand1: Option<Expression>,
+    pub operand2: Option<Expression>,
 }
 
 impl OperationBlock {
