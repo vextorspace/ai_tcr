@@ -11,18 +11,17 @@ impl Parser {
 }
 
 struct Expression {
-    expr: String,
+    value: i32,
 }
 
 impl Expression {
     fn new(expr: &str) -> Self {
-        Expression {
-            expr: expr.to_string(),
-        }
+        let value = expr.parse::<i32>().unwrap_or(0);
+        Expression { value }
     }
 
     fn evaluate(&self) -> Result<i32, std::fmt::Error> {
-        self.expr.parse::<i32>().map_err(|_| std::fmt::Error)
+        Ok(self.value)
     }
 }
 
