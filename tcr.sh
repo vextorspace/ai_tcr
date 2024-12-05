@@ -2,7 +2,7 @@
 
 echo "Find changed files..."
 
-CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$' | grep '^src/'` | grep -v 'mod\.rs' | grep -v 'lib\.rs'
+CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$' | grep '^src/'`
 
 echo "Changed files:"
 for file in $CHANGED_FILES; do
