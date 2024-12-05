@@ -2,8 +2,7 @@
 
 echo "Find changed files..."
 
-CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$'`
-
+CHANGED_FILES=`git status -s | awk '{print $2}' | grep '\.rs$' | grep '^src/'`
 
 cargo test calc
 # Store the test result
