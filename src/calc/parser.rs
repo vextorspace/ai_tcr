@@ -1,13 +1,13 @@
 use crate::calc::expression::Expression;
 
-struct Parser;
+pub struct Parser;
 
 impl Parser {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Parser
     }
 
-    fn evaluate(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
+    pub fn evaluate(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
         expr.evaluate()
     }
 }
