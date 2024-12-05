@@ -1,48 +1,23 @@
-mod calc {
-    pub mod operation {
-        pub enum Operation {
-            PLUS,
-        }
+use super::operation::Operation;
 
-        impl Operation {
-            pub fn operate(&self, a: i32, b: i32) -> i32 {
-                match self {
-                    Operation::PLUS => a + b,
-                }
-            }
+pub struct OperationBlock {
+    operation: Option<Operation>,
+}
 
-            pub fn symbol(&self) -> &str {
-                match self {
-                    Operation::PLUS => "+",
-                }
-            }
-        }
+impl OperationBlock {
+    pub fn new() -> Self {
+        OperationBlock { operation: None }
     }
 
-    pub mod operation_block {
-        use super::operation::Operation;
-
-        pub struct OperationBlock {
-            operation: Option<Operation>,
-        }
-
-        impl OperationBlock {
-            pub fn new() -> Self {
-                OperationBlock { operation: None }
-            }
-
-            pub fn with_operation(mut self, op: Operation) -> Self {
-                self.operation = Some(op);
-                self
-            }
-        }
+    pub fn with_operation(mut self, op: Operation) -> Self {
+        self.operation = Some(op);
+        self
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::calc::operation::Operation;
-    use super::calc::operation_block::OperationBlock;
+    use super::*;
 
     #[test]
     fn test_implementation() {
