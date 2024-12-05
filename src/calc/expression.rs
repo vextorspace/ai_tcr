@@ -1,3 +1,4 @@
+use super::operation_block::OperationBlock;
 use std::fmt;
 
 #[derive(Debug, PartialEq, Clone)]
@@ -18,7 +19,7 @@ impl Expression {
 
     pub fn find_operation(&self, op: Operation) -> Result<OperationBlock, std::fmt::Error> {
         if self.expr.contains(op.as_str()) {
-            Ok(OperationBlock)
+            Ok(OperationBlock::new())
         } else {
             Err(std::fmt::Error)
         }
@@ -42,9 +43,6 @@ impl Operation {
         }
     }
 }
-
-pub struct OperationBlock;
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -113,7 +111,8 @@ mod tests {
     #[test]
     fn find_operation_success_gives_operation_block() {
         let expression = Expression::new("1 + 2");
-        let value: Result<OperationBlock, std::fmt::Error> = expression.find_operation(Operation::PLUS);
+        let value: Result<OperationBlock, std::fmt::Error> =
+            expression.find_operation(Operation::PLUS);
         assert!(value.is_ok());
     }
 }
