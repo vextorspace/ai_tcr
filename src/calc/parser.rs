@@ -11,8 +11,8 @@ impl Parser {
         expr.evaluate()
     }
 
-    pub fn parse(&self, expr: Expression) -> Expression {
-        expr
+    pub fn parse(&self, expr: Expression) -> Vec<Expression> {
+        vec![expr]
     }
 }
 
@@ -35,7 +35,8 @@ mod tests {
     #[test]
     fn parse_numeric_gives_equivalent_numeric_expression() {
         let parser = Parser::new();
-        let parsed = parser.parse(Expression::new("1"));
-        assert_eq!(parsed, Expression::new("1"));
+        let parsed: Vec<Expression> = parser.parse(Expression::new("1"));
+        assert_eq!(parsed.len(), 1);
+        assert_eq!(parsed[0], Expression::new("1"));
     }
 }
