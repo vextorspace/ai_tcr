@@ -22,7 +22,7 @@ mod tests {
     }
 
     #[test]
-    fn parse_number_expression_gives_number() {
+    fn evaluate_number_expression_gives_number() {
         let parser = Parser::new();
         let result = parser.evaluate(Expression::new("1"));
         assert_eq!(result, Ok(1));
