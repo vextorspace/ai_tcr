@@ -50,6 +50,17 @@ mod tests {
         assert_eq!(block.operation, Some(Operation::PLUS));
         assert_eq!(block.operand1, Some(first_expression));
         assert_eq!(block.operand2, Some(second_expression));
+    }
+
+    #[test]
+    fn test_equality() {
+        let first_expression = Expression::new("1");
+        let second_expression = Expression::new("2");
+
+        let block = OperationBlock::new()
+            .with_operation(Operation::PLUS)
+            .with_operand1(first_expression.clone())
+            .with_operand2(second_expression.clone());
 
         assert_eq!(block, block.clone());
     }
