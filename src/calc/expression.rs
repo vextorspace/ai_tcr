@@ -1,15 +1,15 @@
-struct Expression {
+pub struct Expression {
     expr: String,
 }
 
 impl Expression {
-    fn new(expr: &str) -> Self {
+    pub fn new(expr: &str) -> Self {
         Expression {
             expr: expr.to_string(),
         }
     }
 
-    fn evaluate(&self) -> Result<i32, std::fmt::Error> {
+    pub fn evaluate(&self) -> Result<i32, std::fmt::Error> {
         self.expr.parse().map_err(|_| std::fmt::Error)
     }
 }
