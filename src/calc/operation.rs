@@ -20,7 +20,7 @@ mod tests {
     }
 
     #[test]
-    fn plus() {
+    fn plus_operation() {
         let plus = Operation::PLUS;
         let result = plus.operate(2, 3);
         assert_eq!(result, 5);
