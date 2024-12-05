@@ -1,6 +1,8 @@
 use crate::calc::expression::Expression;
 use std::fmt::Error;
 
+use super::operation_block::OperationBlock;
+
 pub struct Parser;
 
 impl Parser {
@@ -12,9 +14,8 @@ impl Parser {
         expr.evaluate()
     }
 
-    pub fn parse(&self, expr: Expression) -> Result<(), Error> {
-        // Placeholder implementation
-        Ok(())
+    pub fn parse(&self, expr: Expression) -> Result<OperationBlock, Error> {
+        Err(Error)
     }
 }
 
