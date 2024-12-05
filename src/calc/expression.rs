@@ -1,5 +1,5 @@
 use super::operation::Operation;
-use super::operation_block::OperationBlock;
+use super::operation_block::{self, OperationBlock};
 use std::fmt;
 
 #[derive(Debug, PartialEq, Clone)]
@@ -20,7 +20,9 @@ impl Expression {
 
     pub fn find_operation(&self, op: Operation) -> Result<OperationBlock, std::fmt::Error> {
         if self.expr.contains(op.as_str()) {
-            Ok(OperationBlock::new())
+            let mut operation_block = OperationBlock::new();
+            operation_block.operation = Some(op);
+            Ok(operation_block)
         } else {
             Err(std::fmt::Error)
         }
@@ -104,5 +106,8 @@ mod tests {
         let value: Result<OperationBlock, std::fmt::Error> =
             expression.find_operation(Operation::PLUS);
         assert!(value.is_ok());
+
+        let block = value.unwrap();
+        assert_eq!(block.operation, Some(Operation::PLUS));
     }
 }
