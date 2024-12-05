@@ -23,7 +23,7 @@ mod tests {
 
     #[test]
     fn instantiate() {
-        let plus = Operation::PLUS;
+        let _plus = Operation::PLUS;
     }
 
     #[test]
