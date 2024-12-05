@@ -15,11 +15,31 @@ impl Expression {
     pub fn evaluate(&self) -> Result<i32, std::fmt::Error> {
         self.expr.parse().map_err(|_| std::fmt::Error)
     }
+
+    pub fn find_operation(&self, op: Operation) -> Result<(), std::fmt::Error> {
+        if self.expr.contains(op.as_str()) {
+            Ok(())
+        } else {
+            Err(std::fmt::Error)
+        }
+    }
 }
 
 impl fmt::Display for Expression {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.expr)
+    }
+}
+
+pub enum Operation {
+    PLUS,
+}
+
+impl Operation {
+    fn as_str(&self) -> &str {
+        match self {
+            Operation::PLUS => "+",
+        }
     }
 }
 
@@ -79,5 +99,12 @@ mod tests {
     fn test_can_make_string() {
         let expression = Expression::new("2 + 3");
         assert_eq!(expression.to_string(), "2 + 3".to_string());
+    }
+
+    #[test]
+    fn find_operation_failure_gives_error() {
+        let expression = Expression::new("1 - 2");
+        let value = expression.find_operation(Operation::PLUS);
+        assert!(value.is_err());
     }
 }
