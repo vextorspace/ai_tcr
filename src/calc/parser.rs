@@ -7,7 +7,7 @@ impl Parser {
         Parser
     }
 
-    fn parse(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
+    fn evaluate(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
         expr.evaluate()
     }
 }
@@ -24,7 +24,7 @@ mod tests {
     #[test]
     fn parse_number_expression_gives_number() {
         let parser = Parser::new();
-        let result = parser.parse(Expression::new("1"));
+        let result = parser.evaluate(Expression::new("1"));
         assert_eq!(result, Ok(1));
     }
 }
