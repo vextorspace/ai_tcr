@@ -6,7 +6,7 @@ pub struct Expression {
 impl Expression {
     pub fn new(expr: &str) -> Self {
         Expression {
-            expr: expr.to_string(),
+            expr: expr.trim().to_string(),
         }
     }
 
@@ -58,5 +58,12 @@ mod tests {
         let expression1 = Expression::new("2");
         let expression2 = Expression::new("3");
         assert_ne!(expression1, expression2);
+    }
+
+    #[test]
+    fn test_two_same_numbers_but_different_whitespace_are_equal() {
+        let expression1 = Expression::new("2");
+        let expression2 = Expression::new(" 2 ");
+        assert_eq!(expression1, expression2);
     }
 }
