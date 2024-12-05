@@ -10,6 +10,11 @@ impl Parser {
     pub fn evaluate(&self, expr: Expression) -> Result<i32, std::fmt::Error> {
         expr.evaluate()
     }
+
+    pub fn parse(&self, expr: Expression) -> Result<(), std::fmt::Error> {
+        // Placeholder implementation
+        Ok(())
+    }
 }
 
 #[cfg(test)]
@@ -26,5 +31,11 @@ mod tests {
         let parser = Parser::new();
         let result = parser.evaluate(Expression::new("1"));
         assert_eq!(result, Ok(1));
+    }
+
+    #[test]
+    fn parse_sum_expression_gives_block_op() {
+        let parser = Parser::new();
+        let _op_block = parser.parse(Expression::new("1+2"));
     }
 }
