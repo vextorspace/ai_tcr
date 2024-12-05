@@ -37,4 +37,11 @@ mod tests {
         assert!(value.is_ok());
         assert_eq!(value.unwrap(), -2);
     }
+
+    #[test]
+    fn test_sum_evaluates_to_error() {
+        let expression = Expression::new("1 + 2");
+        let value = expression.evaluate();
+        assert!(value.is_err());
+    }
 }
