@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Operation {
     PLUS,
 }
@@ -38,5 +38,11 @@ mod tests {
         let plus = Operation::PLUS;
         let symbol = plus.symbol();
         assert_eq!(symbol, "+");
+    }
+
+    #[test]
+    fn plus_clones() {
+        let plus = Operation::PLUS;
+        let _plus_clone = plus.clone();
     }
 }
