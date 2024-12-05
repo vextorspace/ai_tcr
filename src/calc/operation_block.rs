@@ -1,5 +1,4 @@
-use super::operation::Operation;
-use crate::calc::expression::Expression;
+use crate::calc::{expression::Expression, operation::Operation};
 
 pub struct OperationBlock {
     operation: Option<Operation>,
@@ -8,7 +7,7 @@ pub struct OperationBlock {
 
 impl OperationBlock {
     pub fn new() -> Self {
-        OperationBlock { 
+        OperationBlock {
             operation: None,
             operand1: None,
         }
@@ -27,8 +26,8 @@ impl OperationBlock {
 
 #[cfg(test)]
 mod tests {
-    use crate::calc::expression::Expression;
     use super::*;
+    use crate::calc::expression::Expression;
 
     #[test]
     fn test_implementation() {
