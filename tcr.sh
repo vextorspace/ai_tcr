@@ -47,9 +47,9 @@ else
         git reset --hard HEAD
     else
         echo "++++++ Tests passed! Committing... ++++++"
-      git add .
-      COMMIT_MESSAGE=`commit_message`
-      git commit -m "$COMMIT_MESSAGE"
+        git add .
+        COMMIT_MESSAGE=`commit_message`
+        git commit -m "$COMMIT_MESSAGE"
     fi
 fi
 
