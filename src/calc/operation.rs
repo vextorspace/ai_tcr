@@ -15,6 +15,10 @@ impl Operation {
             Operation::PLUS => "+",
         }
     }
+
+    pub fn as_str(&self) -> &str {
+        self.symbol()
+    }
 }
 
 #[cfg(test)]
@@ -44,5 +48,13 @@ mod tests {
     fn plus_clones() {
         let plus = Operation::PLUS;
         let _plus_clone = plus.clone();
+    }
+
+    #[test]
+    fn as_str_same_as_symbol() {
+        let plus = Operation::PLUS;
+        let as_str = plus.as_str();
+        let symbol = plus.symbol();
+        assert_eq!(as_str, symbol);
     }
 }
