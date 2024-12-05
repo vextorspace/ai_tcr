@@ -38,7 +38,7 @@ mod tests {
 
     #[test]
     fn test_implementation() {
-        let _operation_block = OperationBlock::new()
+        let block = OperationBlock::new()
             .with_operation(Operation::PLUS)
             .with_operand1(Expression::new("1"))
             .with_operand2(Expression::new("2"));
