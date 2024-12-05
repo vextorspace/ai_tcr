@@ -9,8 +9,8 @@ impl Expression {
         }
     }
 
-    fn evaluate(&self) -> i32 {
-        self.expr.parse().unwrap_or(0)
+    fn evaluate(&self) -> Result<i32, std::fmt::Error> {
+        self.expr.parse().map_err(|_| std::fmt::Error)
     }
 }
 
@@ -20,13 +20,13 @@ mod tests {
 
     #[test]
     fn test_expression() {
-        let expression = Expression::new("1 + 2 * 3");
+        let _expression = Expression::new("1 + 2 * 3");
     }
 
     #[test]
     fn test_positive_number_evaluates() {
         let expression = Expression::new("2");
-        let value = expression.evaluate();
+        let value = expression.evaluate().unwrap();
         assert_eq!(value, 2);
     }
 
@@ -34,6 +34,7 @@ mod tests {
     fn test_negative_number_evaluates() {
         let expression = Expression::new("-2");
         let value = expression.evaluate();
-        assert_eq!(value, -2);
+        assert!(value.is_ok());
+        assert_eq!(value.unwrap(), -2);
     }
 }
