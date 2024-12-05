@@ -1,25 +1,7 @@
-enum Operation {
-    PLUS,
-}
-
-impl Operation {
-    fn operate(&self, a: i32, b: i32) -> i32 {
-        match self {
-            Operation::PLUS => a + b,
-        }
-    }
-
-    fn symbol(&self) -> &str {
-        match self {
-            Operation::PLUS => "+",
-        }
-    }
-}
-
-struct OperationBlock;
+pub struct OperationBlock;
 
 impl OperationBlock {
-    fn new() -> Self {
+    pub fn new() -> Self {
         OperationBlock
     }
 }
