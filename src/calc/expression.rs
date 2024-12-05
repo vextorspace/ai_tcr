@@ -16,9 +16,9 @@ impl Expression {
         self.expr.parse().map_err(|_| std::fmt::Error)
     }
 
-    pub fn find_operation(&self, op: Operation) -> Result<(), std::fmt::Error> {
+    pub fn find_operation(&self, op: Operation) -> Result<OperationBlock, std::fmt::Error> {
         if self.expr.contains(op.as_str()) {
-            Ok(())
+            Ok(OperationBlock)
         } else {
             Err(std::fmt::Error)
         }
@@ -42,6 +42,8 @@ impl Operation {
         }
     }
 }
+
+pub struct OperationBlock;
 
 #[cfg(test)]
 mod tests {
@@ -111,7 +113,7 @@ mod tests {
     #[test]
     fn find_operation_success_gives_operation_block() {
         let expression = Expression::new("1 + 2");
-        let value = expression.find_operation(Operation::PLUS);
+        let value: Result<OperationBlock, std::fmt::Error> = expression.find_operation(Operation::PLUS);
         assert!(value.is_ok());
     }
 }
