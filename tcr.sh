@@ -21,10 +21,10 @@ if [ -z "$CHANGED_FILES" ]; then
         echo "Tests failed! Removing changes..."
         git reset --hard HEAD
     else
-        echo "Tests passed! Committing..."
-      git add .
-      COMMIT_MESSAGE=`commit_message`
-      git commit -m "$COMMIT_MESSAGE"
+        echo "++++++ Tests passed! Committing ++++++"
+        git add .
+        COMMIT_MESSAGE=`commit_message`
+        git commit -m "$COMMIT_MESSAGE"
     fi
 else
     if [ $TEST_RESULT -ne 0 ]; then
