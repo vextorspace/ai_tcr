@@ -52,4 +52,11 @@ mod tests {
         let expression2 = Expression::new("2");
         assert_eq!(expression1, expression2);
     }
+
+    #[test]
+    fn test_two_different_numbers_are_not_equal() {
+        let expression1 = Expression::new("2");
+        let expression2 = Expression::new("3");
+        assert_ne!(expression1, expression2);
+    }
 }
