@@ -1,3 +1,4 @@
+use super::operation::Operation;
 use super::operation_block::OperationBlock;
 use std::fmt;
 
@@ -32,17 +33,6 @@ impl fmt::Display for Expression {
     }
 }
 
-pub enum Operation {
-    PLUS,
-}
-
-impl Operation {
-    fn as_str(&self) -> &str {
-        match self {
-            Operation::PLUS => "+",
-        }
-    }
-}
 #[cfg(test)]
 mod tests {
     use super::*;
