@@ -42,5 +42,7 @@ mod tests {
             .with_operation(Operation::PLUS)
             .with_operand1(Expression::new("1"))
             .with_operand2(Expression::new("2"));
+
+        assert_eq!(block.operation, Some(Operation::PLUS));
     }
 }
