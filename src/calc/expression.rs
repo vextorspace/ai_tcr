@@ -23,9 +23,11 @@ impl Expression {
             let parts: Vec<&str> = self.expr.split(op.as_str()).collect();
             if parts.len() == 2 {
                 let operand1 = Expression::new(parts[0].trim());
+                let operand2 = Expression::new(parts[1].trim());
                 let operation_block = OperationBlock::new()
                     .with_operation(op)
-                    .with_operand1(operand1);
+                    .with_operand1(operand1)
+                    .with_operand2(operand2);
                 return Ok(operation_block);
             }
         }
@@ -114,5 +116,6 @@ mod tests {
         let block = value.unwrap();
         assert_eq!(block.operation, Some(Operation::PLUS));
         assert_eq!(block.operand1, Some(Expression::new("1")));
+        assert_eq!(block.operand2, Some(Expression::new("2")));
     }
 }
